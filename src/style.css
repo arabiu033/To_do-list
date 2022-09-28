@@ -3,7 +3,7 @@
   margin: 0;
   list-style: none;
   text-decoration: none;
-  box-sizing: border-box
+  box-sizing: border-box;
 }
 
 body {
@@ -26,12 +26,11 @@ main {
   justify-content: center;
   background-color: #fff;
   width: 28vw;
-  box-shadow: 0px 2px 8px rgb(0 0 0 / 18%);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 18%);
 }
 
 main > * {
-  border-bottom: 1px solid #f1f2f5;
-  border-bottom: 1px solid rgba(0,0,0,0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   width: 100%;
 }
 
@@ -41,10 +40,6 @@ main > * {
   justify-content: space-between;
   padding: 4% 4.5%;
   height: 55px;
-}
-
-.desc {
-  float: left;
 }
 
 .list-title h5 {
@@ -71,10 +66,10 @@ main > * {
   color: gray;
 }
 
-li  {
+li {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(0,0,0,0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   align-content: center;
   font-size: 1rem;
   font-weight: 300;
@@ -128,10 +123,10 @@ input {
 
 .to-do:focus {
   outline: none;
-
 }
 
-.list-title, .add-item {
+.list-title,
+.add-item {
   width: 100%;
 }
 
