@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
      index: './src/index.js',
    },
    mode: 'development',
+   devtool: 'inline-source-map',
    devServer: {
     static: './dist',
   },
@@ -27,6 +28,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
       {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
       },
     ],
   },
