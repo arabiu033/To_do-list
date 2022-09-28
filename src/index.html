@@ -3,9 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wbpack Exercise</title>
+    <title>To-do list</title>
 </head>
 <body>
-    <h1>Hello webpack!</h1>
+
+        <main>
+            <div class="list-title">
+                <h5>Today's To Do</h5>
+                <div class="refresh"></div>
+            </div>
+            <div class="add-item">
+                <form>
+                    <input type="text" id="new-priority" placeholder="Add to your list..." class="to-do">
+                    <div class="arrow"></div>
+                </form>
+            </div>
+            <ul id="to-do-list"></ul>
+            <button class="clear">Clear all completed</button>
+        </main>
 </body>
 </html>
