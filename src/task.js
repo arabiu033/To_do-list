@@ -4,7 +4,7 @@ import unchecked from './images/unchecked.png';
 import mark from './images/check.png';
 import recycle from './images/bin.png';
 
-const ul = document.getElementById('to-do-list');
+export const ul = document.getElementById('to-do-list');
 export default class TaskHandling {
   constructor(tasks) {
     this.tasks = tasks;
@@ -65,10 +65,10 @@ export default class TaskHandling {
     };
   }
 
-  select = (ele) => {
-    ele.nextSibling.classList.toggle('strike');
-    ele.src = ele.src === mark ? unchecked : mark;
-  }
+  // select = (ele) => {
+  //   ele.nextSibling.classList.toggle('strike');
+  //   ele.src = ele.src === mark ? unchecked : mark;
+  // }
 
   populate() {
     for (let i = 0; i < this.tasks.length; i += 1) {
@@ -101,11 +101,11 @@ export default class TaskHandling {
       ul.appendChild(li);
     }
 
-    const checks = document.querySelectorAll('.check');
+    // const checks = document.querySelectorAll('.check');
     const descp = document.querySelectorAll('.desc');
-    checks.forEach((e) => {
-      e.addEventListener('click', () => this.select(e));
-    });
+    // checks.forEach((e) => {
+    //   e.addEventListener('click', () => this.select(e));
+    // });
     descp.forEach((e) => {
       e.addEventListener('click', () => this.edit(e));
     });
