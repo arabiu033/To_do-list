@@ -23,7 +23,7 @@ main {
   background-color: #fff;
   width: 28vw;
   margin-top: 5rem;
-  height: fit-content;
+  height: 100%;
   box-shadow: 0 2px 8px rgb(0 0 0 / 18%);
 }
 

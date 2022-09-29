@@ -3,11 +3,10 @@ import dots from './images/menu.png';
 import unchecked from './images/unchecked.png';
 import mark from './images/check.png';
 import recycle from './images/bin.png';
-const ul = document.getElementById('to-do-list');
 
+const ul = document.getElementById('to-do-list');
 export default class TaskHandling {
   constructor(tasks) {
-    
     this.tasks = tasks;
     this.taskCount = tasks.length;
     ul.innerHTML = '';
@@ -15,8 +14,9 @@ export default class TaskHandling {
   }
 
   add(ele) {
-    if (ele.value === '')
+    if (ele.value === '') {
       return;
+    }
     this.taskCount += 1;
     this.tasks.push({ index: this.taskCount, desc: ele.value, completed: false });
     localStorage.setItem('listOfTasks', JSON.stringify(this.tasks));
@@ -27,8 +27,9 @@ export default class TaskHandling {
 
   remove(ele) {
     this.tasks = this.tasks.filter((e) => e.index !== +ele.parentElement.id);
-    for (let i = 0; i < this.tasks.length; i += 1)
+    for (let i = 0; i < this.tasks.length; i += 1) {
       this.tasks[i].index = i + 1;
+    }
     localStorage.setItem('listOfTasks', JSON.stringify(this.tasks));
     ul.removeChild(ele.parentElement);
   }
@@ -37,7 +38,7 @@ export default class TaskHandling {
     ele.classList.add('hide');
     const li = ele.parentElement;
     const textArea = ele.nextSibling;
-    const menu  = textArea.nextSibling;
+    const menu = textArea.nextSibling;
     const bin = menu.nextSibling;
 
     textArea.classList.remove('hide');
@@ -58,7 +59,7 @@ export default class TaskHandling {
       textArea.classList.add('hide');
       ele.classList.remove('hide');
       li.classList.remove('edit');
-    }
+    };
   }
 
   select(ele) {
@@ -74,7 +75,7 @@ export default class TaskHandling {
       const check = document.createElement('img');
       check.className = 'check';
       check.src = unchecked;
-  
+
       const p = document.createElement('p');
       p.className = 'desc';
       p.textContent = this.tasks[i].desc;
@@ -82,27 +83,27 @@ export default class TaskHandling {
       editArea.setAttribute('type', 'text');
       editArea.setAttribute('value', this.tasks[i].desc);
       editArea.className = 'to-do hide edit';
-  
+
       const menu = document.createElement('img');
       menu.className = 'dots';
       menu.style.cursor = 'move';
       menu.src = dots;
-  
+
       const bin = document.createElement('img');
       bin.className = 'dots hide bin';
       bin.style.cursor = 'pointer';
       bin.src = recycle;
-  
+
       li.append(check, p, editArea, menu, bin);
       ul.appendChild(li);
     }
 
     const checks = document.querySelectorAll('.check');
     const descp = document.querySelectorAll('.desc');
-    checks.forEach(e => {
+    checks.forEach((e) => {
       e.addEventListener('click', () => this.select(e));
     });
-    descp.forEach(e => {
+    descp.forEach((e) => {
       e.addEventListener('click', () => this.edit(e));
     });
   }
