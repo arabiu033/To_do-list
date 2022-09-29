@@ -45,21 +45,24 @@ export default class TaskHandling {
     menu.classList.add('hide');
     bin.classList.remove('hide');
     li.classList.add('edit');
-
-    textArea.focus();
+    bin.addEventListener('click', () => this.remove(bin));
+  
     textArea.onblur = () => {
       if (textArea.value === '') {
         this.remove(textArea);
         return;
       }
-
+      
       ele.textContent = textArea.value;
       menu.classList.remove('hide');
       bin.classList.add('hide');
       textArea.classList.add('hide');
       ele.classList.remove('hide');
       li.classList.remove('edit');
-    };
+      console.log(li.id);
+      this.tasks[li.id - 1].desc = ele.textContent;
+      localStorage.setItem('listOfTasks', JSON.stringify(this.tasks));
+    }
   }
 
   select = (ele) => {
