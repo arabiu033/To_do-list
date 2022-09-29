@@ -19,4 +19,4 @@ add.addEventListener('click', () => {
 });
 
 const clear = document.getElementById('clear');
-clear.addEventListener('click', () => clearTasks(tasks))
+clear.addEventListener('click', () => clearTasks(tasks));
