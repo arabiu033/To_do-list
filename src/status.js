@@ -7,7 +7,7 @@ const select = (ele, task) => {
   ele.nextSibling.classList.toggle('strike');
   ele.src = ele.src === mark ? unchecked : mark;
   const hold = task.tasks[+ele.parentElement.id - 1].completed;
-  
+
   if (hold) {
     task.tasks[+ele.parentElement.id - 1].completed = false;
   } else {
