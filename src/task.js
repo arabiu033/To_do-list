@@ -49,7 +49,7 @@ export default class TaskHandling {
       if (e.key === 'Enter') {
         this.cleanup(ele, textArea, menu, li, bin);
       }
-    })
+    });
 
     textArea.onblur = () => {
       if (textArea.value === '') {
