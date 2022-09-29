@@ -45,29 +45,32 @@ export default class TaskHandling {
     bin.classList.remove('hide');
     li.classList.add('edit');
     bin.addEventListener('click', () => this.remove(bin));
+    textArea.addEventListener('keyup', (e) => {
+      if (e.key === 'Enter') {
+        this.cleanup(ele, textArea, menu, li, bin);
+      }
+    })
 
     textArea.onblur = () => {
       if (textArea.value === '') {
         this.remove(textArea);
         return;
       }
-
-      ele.textContent = textArea.value;
-      menu.classList.remove('hide');
-      bin.classList.add('hide');
-      textArea.classList.add('hide');
-      ele.classList.remove('hide');
-      li.classList.remove('edit');
-
-      this.tasks[li.id - 1].desc = ele.textContent;
-      localStorage.setItem('listOfTasks', JSON.stringify(this.tasks));
+      this.cleanup(ele, textArea, menu, li, bin);
     };
   }
 
-  // select = (ele) => {
-  //   ele.nextSibling.classList.toggle('strike');
-  //   ele.src = ele.src === mark ? unchecked : mark;
-  // }
+  cleanup(ele, textArea, menu, li, bin) {
+    ele.textContent = textArea.value;
+    menu.classList.remove('hide');
+    bin.classList.add('hide');
+    textArea.classList.add('hide');
+    ele.classList.remove('hide');
+    li.classList.remove('edit');
+
+    this.tasks[li.id - 1].desc = ele.textContent;
+    localStorage.setItem('listOfTasks', JSON.stringify(this.tasks));
+  }
 
   populate() {
     for (let i = 0; i < this.tasks.length; i += 1) {
@@ -82,6 +85,7 @@ export default class TaskHandling {
       p.className = 'desc';
       p.textContent = this.tasks[i].desc;
       const editArea = document.createElement('input');
+      editArea.setAttribute('id', 'added-task');
       editArea.setAttribute('type', 'text');
       editArea.setAttribute('value', this.tasks[i].desc);
       editArea.className = 'to-do hide edit';
@@ -100,11 +104,7 @@ export default class TaskHandling {
       ul.appendChild(li);
     }
 
-    // const checks = document.querySelectorAll('.check');
     const descp = document.querySelectorAll('.desc');
-    // checks.forEach((e) => {
-    //   e.addEventListener('click', () => this.select(e));
-    // });
     descp.forEach((e) => {
       e.addEventListener('click', () => this.edit(e));
     });
