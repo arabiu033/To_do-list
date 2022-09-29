@@ -81,7 +81,7 @@ li img {
   cursor: pointer;
 }
 
-form {
+.form {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -129,7 +129,7 @@ input {
   height: 55px;
 }
 
-.clear {
+#clear {
   border: none;
   background-color: #d4d4d4;
   opacity: 0.5;
