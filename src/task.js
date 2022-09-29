@@ -62,7 +62,7 @@ export default class TaskHandling {
     };
   }
 
-  selectTask(ele) {
+  select = (ele) => {
     ele.nextSibling.classList.toggle('strike');
     ele.src = ele.src === mark ? unchecked : mark;
   }
@@ -101,7 +101,7 @@ export default class TaskHandling {
     const checks = document.querySelectorAll('.check');
     const descp = document.querySelectorAll('.desc');
     checks.forEach((e) => {
-      e.addEventListener('click', () => this.selectTask(e));
+      e.addEventListener('click', () => this.select(e));
     });
     descp.forEach((e) => {
       e.addEventListener('click', () => this.edit(e));
