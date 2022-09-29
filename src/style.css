@@ -10,13 +10,9 @@ body {
   background-color: #f1f2f5;
   font-family: 'Open Sans', 'Lucida Grande', tahoma, verdana, arial, sans-serif;
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  margin-top: -20vh;
   min-width: 100vw;
   min-height: 100vh;
-  overflow: hidden;
 }
 
 main {
@@ -26,6 +22,8 @@ main {
   justify-content: center;
   background-color: #fff;
   width: 28vw;
+  margin-top: 5rem;
+  height: fit-content;
   box-shadow: 0 2px 8px rgb(0 0 0 / 18%);
 }
 
@@ -70,16 +68,16 @@ li {
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  align-content: center;
+  align-items: center;
   font-size: 1rem;
   font-weight: 300;
   padding: 3% 4%;
-  height: 55px;
+  height: 62px;
 }
 
 li img {
-  width: 22px;
-  height: 22px;
+  width: 18px;
+  height: 18px;
   cursor: pointer;
 }
 
@@ -87,6 +85,7 @@ form {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
 
 input::placeholder {
@@ -111,13 +110,12 @@ input {
 }
 
 .arrow {
-  background-image: url('./images/enter\ 1.png');
+  background-image: url('./images/enter.png');
   background-repeat: no-repeat;
   background-size: cover;
   width: 15px;
   height: 15px;
   margin-right: 5%;
-  margin-top: 3%;
   cursor: pointer;
 }
 
@@ -128,6 +126,7 @@ input {
 .list-title,
 .add-item {
   width: 100%;
+  height: 55px;
 }
 
 .clear {
@@ -139,4 +138,16 @@ input {
   font-size: 1rem;
   text-decoration: underline;
   cursor: pointer;
+}
+
+.hide {
+  display: none;
+}
+
+.edit {
+  background-color: #ffffbc;
+}
+
+.strike {
+  text-decoration: line-through;
 }
