@@ -25,6 +25,6 @@ const input = document.getElementById('new-priority');
 input.addEventListener('keyup', (e) => {
   if (e.key === 'Enter') {
     tasks.add(add.previousSibling.previousSibling);
-    updateCheck(tasks); 
+    updateCheck(tasks);
   }
-})
+});
