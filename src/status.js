@@ -4,11 +4,11 @@ import mark from './images/check.png';
 import { ul } from './task.js';
 
 const select = (ele, task) => {
-  console.log('hhh');
   ele.nextSibling.classList.toggle('strike');
   ele.src = ele.src === mark ? unchecked : mark;
-  task.tasks[+ele.parentElement.id - 1].completed = task.tasks[+ele.parentElement.id - 1].completed ? false : true;
-}
+  let hold = task.tasks[+ele.parentElement.id - 1].completed;
+  task.tasks[+ele.parentElement.id - 1].completed = hold ? false : true;
+};
 
 function updateCheck(task) {
   const checks = document.querySelectorAll('.check');
@@ -26,6 +26,6 @@ const clearTasks = (task) => {
   ul.innerHTML = '';
   task.populate();
   updateCheck(task);
-}
+};
 
 export { updateCheck, clearTasks };
