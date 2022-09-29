@@ -1,7 +1,6 @@
 // This a class containing all the necessary operations
 import dots from './images/menu.png';
 import unchecked from './images/unchecked.png';
-import mark from './images/check.png';
 import recycle from './images/bin.png';
 
 export const ul = document.getElementById('to-do-list');

@@ -6,8 +6,13 @@ import { ul } from './task.js';
 const select = (ele, task) => {
   ele.nextSibling.classList.toggle('strike');
   ele.src = ele.src === mark ? unchecked : mark;
-  let hold = task.tasks[+ele.parentElement.id - 1].completed;
-  task.tasks[+ele.parentElement.id - 1].completed = hold ? false : true;
+  const hold = task.tasks[+ele.parentElement.id - 1].completed;
+  
+  if (hold) {
+    task.tasks[+ele.parentElement.id - 1].completed = false;
+  } else {
+    task.tasks[+ele.parentElement.id - 1].completed = true;
+  }
 };
 
 function updateCheck(task) {
