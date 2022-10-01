@@ -1,13 +1,30 @@
-import _ from 'lodash';
 import './style.css';
+import TaskHandling from './task.js';
+import {
+  updateCheck, clearTasks,
+} from './status.js';
 
- function component() {
-   const element = document.createElement('div');
+let tasks;
+if (localStorage.getItem('listOfTasks')) {
+  tasks = new TaskHandling(JSON.parse(localStorage.getItem('listOfTasks') || '[]'));
+  updateCheck(tasks);
+} else {
+  tasks = new TaskHandling([]);
+}
 
-  // Lodash, now imported by this script
-   element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+const add = document.querySelector('.arrow');
+add.addEventListener('click', () => {
+  tasks.add(add.previousSibling.previousSibling);
+  updateCheck(tasks);
+});
 
-   return element;
- }
+const clear = document.getElementById('clear');
+clear.addEventListener('click', () => clearTasks(tasks));
 
- document.body.appendChild(component());
+const input = document.getElementById('new-priority');
+input.addEventListener('keyup', (e) => {
+  if (e.key === 'Enter') {
+    tasks.add(add.previousSibling.previousSibling);
+    updateCheck(tasks);
+  }
+});
