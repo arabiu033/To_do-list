@@ -6,20 +6,23 @@
     <title>To-do list</title>
 </head>
 <body>
-
+    <div class="list-title">
+        <h5>Today's <span class="todo">TODO</span></h5>
+        <div class="refresh"></div>
+    </div>
         <main>
-            <div class="list-title">
-                <h5>Today's To Do</h5>
-                <div class="refresh"></div>
-            </div>
+            
             <div class="add-item">
                 <div class="form">
                     <input type="text" id="new-priority" placeholder="Add to your list..." class="to-do">
                     <div class="arrow"></div>
                 </div>
             </div>
-            <ul id="to-do-list"></ul>
-            <button id="clear">Clear all completed</button>
+            <ul id="to-do-list">
+                <p>No todo items left!</p>
+            </ul>
+            
         </main>
+        <button id="clear">Clear all completed</button>
 </body>
 </html>
