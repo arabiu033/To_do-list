@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,700&family=Montserrat:wght@500;700&display=swap');
+
 * {
   padding: 0;
   margin: 0;
@@ -7,12 +9,18 @@
 }
 
 body {
+  background-image: url('./images/bg-desktop-light.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
   background-color: #f1f2f5;
-  font-family: 'Open Sans', 'Lucida Grande', tahoma, verdana, arial, sans-serif;
+  font-family: 'Fraunces', serif;
+  font-family: 'Montserrat', sans-serif;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  min-width: 100vw;
-  min-height: 100vh;
+  min-width: 100%;
+  min-height: 85vh;
 }
 
 main {
@@ -21,8 +29,7 @@ main {
   align-items: center;
   justify-content: center;
   background-color: #fff;
-  width: 28vw;
-  margin-top: 5rem;
+  width: 35%;
   height: 100%;
   box-shadow: 0 2px 8px rgb(0 0 0 / 18%);
 }
@@ -36,24 +43,35 @@ main > * {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 4% 4.5%;
-  height: 55px;
+  padding: 1.7% 1.2%;
+  height: 55px;  
+  width: 35vw;
+  background-color: #fff;
+  border-radius: 0.1rem;
+  color: gray;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 18%);
 }
 
 .list-title h5 {
   font-weight: 100;
   font-size: 1.2rem;
-  line-height: 44px;
-  letter-spacing: 2px;
-  color: #545454;
+  letter-spacing: 0px;
+  color: gray;
+}
+
+.todo {
+  letter-spacing: 10px;
+  font-size: 2.2rem;
+  font-weight: 600;
 }
 
 .list-title .refresh {
   background-image: url('./images/refresh.png');
   background-repeat: no-repeat;
   background-size: cover;
-  width: 18px;
-  height: 18px;
+  width: 22px;
+  height: 22px;
   cursor: pointer;
 }
 
@@ -67,7 +85,7 @@ main > * {
 li {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   align-items: center;
   font-size: 1rem;
   font-weight: 300;
@@ -76,8 +94,8 @@ li {
 }
 
 li img {
-  width: 18px;
-  height: 18px;
+  width: 22px;
+  height: 22px;
   cursor: pointer;
 }
 
@@ -86,6 +104,7 @@ li img {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  
 }
 
 input::placeholder {
@@ -123,7 +142,6 @@ input {
   outline: none;
 }
 
-.list-title,
 .add-item {
   width: 100%;
   height: 55px;
@@ -133,11 +151,14 @@ input {
   border: none;
   background-color: #d4d4d4;
   opacity: 0.5;
-  padding: 4% 0;
+  padding: 1.5% 0;
   text-align: center;
   font-size: 1rem;
   text-decoration: underline;
   cursor: pointer;
+  width: 35vw;
+  margin-top: 0.3rem;
+  box-shadow: 0px 0.5px 3px #000;
 }
 
 .hide {
@@ -151,3 +172,10 @@ input {
 .strike {
   text-decoration: line-through;
 }
+
+/* #to-do-list {
+  min-height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
