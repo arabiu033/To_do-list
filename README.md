@@ -14,7 +14,7 @@
 
 ## Live Demo
 
-[To-do List](https://arabiu033.github.io/to_do-list/)
+[To-do List](https://arabiu033-todolist.netlify.app)
 
 ## Author
 
