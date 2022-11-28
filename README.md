@@ -80,8 +80,7 @@
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Image view:
-
-
+  <img src="https://github.com/arabiu033/to_do-list/blob/main/src/images/screencapture-arabiu033-todolist-netlify-app-2022-11-28-17_40_24.png">
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
