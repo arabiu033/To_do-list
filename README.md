@@ -96,7 +96,6 @@ In order to run this project you need:
 > Advance Javascript
 > DOM proficiency
 
-
 ### Setup
 
 Clone this repository to your desired folder:
