@@ -5,17 +5,23 @@ import recycle from './images/bin.png';
 
 export const ul = document.getElementById('to-do-list');
 export default class TaskHandling {
+  // Initialize the class properties
   constructor(tasks) {
+    // use to make focusout event call remove method once.
+    this.signal = false;
+
     this.tasks = tasks;
     this.taskCount = tasks.length;
     ul.innerHTML = '';
     this.populate();
   }
 
+  // class method to handle adding of to-do
   add(ele) {
     if (ele.value === '') {
       return;
     }
+
     this.taskCount += 1;
     this.tasks.push({ index: this.taskCount, desc: ele.value, completed: false });
     localStorage.setItem('listOfTasks', JSON.stringify(this.tasks));
@@ -24,44 +30,65 @@ export default class TaskHandling {
     this.populate();
   }
 
+  // class method to handle removing to-do
   remove(ele) {
-    this.tasks = this.tasks.filter((e) => e.index !== +ele.parentElement.id);
-    for (let i = 0; i < this.tasks.length; i += 1) {
-      this.tasks[i].index = i + 1;
+    if (this.signal) {
+      // serialize the tasks array incase of changes made by editing
+      this.tasks.forEach((ele, i) => { ele.index = i + 1; });
+
+      this.tasks = this.tasks.filter((e) => e.index !== +ele.parentElement.id);
+      // serialize the tasks arrays after filtering the renove task
+      this.tasks.forEach((ele, i) => { ele.index = i + 1; });
+
+      localStorage.setItem('listOfTasks', JSON.stringify(this.tasks));
+      ul.innerHTML = '';
+      this.populate();
+      this.signal = false;
     }
-    localStorage.setItem('listOfTasks', JSON.stringify(this.tasks));
-    ul.removeChild(ele.parentElement);
   }
 
+  // class method to handle editing of todo
   edit(ele) {
+    // capture the siblings element in the todo card
     ele.classList.add('hide');
     const li = ele.parentElement;
-    const textArea = ele.nextSibling;
-    const menu = textArea.nextSibling;
-    const bin = menu.nextSibling;
+    const textArea = ele.nextElementSibling;
+    const menu = textArea.nextElementSibling;
+    const bin = menu.nextElementSibling;
 
+    // effect the editing mode
     textArea.classList.remove('hide');
     menu.classList.add('hide');
     bin.classList.remove('hide');
     li.classList.add('edit');
+
+    // add eventlisteners
     bin.addEventListener('click', () => this.remove(bin));
+
     textArea.addEventListener('keyup', (e) => {
       if (e.key === 'Enter') {
         this.cleanup(ele, textArea, menu, li, bin);
       }
     });
 
-    textArea.onblur = () => {
+    this.signal = true;
+    textArea.addEventListener('focusout', () => {
       if (textArea.value === '') {
         this.remove(textArea);
         return;
       }
-      this.cleanup(ele, textArea, menu, li, bin);
-    };
+      setTimeout(() => this.cleanup(ele, textArea, menu, li, bin), 300);
+    });
 
-
+    // move cursor to end of input field
+    textArea.focus();
+    const val = textArea.value;
+    textArea.value = '';
+    textArea.value = val;
   }
 
+  // Hide and shows elements
+  // based on user action
   cleanup(ele, textArea, menu, li, bin) {
     ele.textContent = textArea.value;
     menu.classList.remove('hide');
@@ -70,41 +97,26 @@ export default class TaskHandling {
     ele.classList.remove('hide');
     li.classList.remove('edit');
 
-    this.tasks[li.id - 1].desc = ele.textContent;
+    if (this.signal) {
+      this.tasks[li.id - 1].desc = ele.textContent;
+    }
     localStorage.setItem('listOfTasks', JSON.stringify(this.tasks));
   }
 
+  // Populate the todos of user
   populate() {
-    for (let i = 0; i < this.tasks.length; i += 1) {
-      const li = document.createElement('li');
-      li.className = 'priorities';
-      li.id = i + 1;
-      const check = document.createElement('img');
-      check.className = 'check';
-      check.src = unchecked;
-
-      const p = document.createElement('p');
-      p.className = 'desc';
-      p.textContent = this.tasks[i].desc;
-      const editArea = document.createElement('input');
-      editArea.setAttribute('id', 'added-task');
-      editArea.setAttribute('type', 'text');
-      editArea.setAttribute('value', this.tasks[i].desc);
-      editArea.className = 'to-do hide edit';
-
-      const menu = document.createElement('img');
-      menu.className = 'dots';
-      menu.style.cursor = 'move';
-      menu.src = dots;
-
-      const bin = document.createElement('img');
-      bin.className = 'dots hide bin';
-      bin.style.cursor = 'pointer';
-      bin.src = recycle;
-
-      li.append(check, p, editArea, menu, bin);
-      ul.appendChild(li);
-    }
+    this.tasks.forEach((ele, i) => {
+      const html = `
+        <li class="priorities" id="${i + 1}">
+          <img class="check" src="${unchecked}" />
+          <p class="desc">${ele.desc}</p>
+          <input type="text" id="added-task" value="${ele.desc}" class="to-do hide edit">
+          <img class="dots" src="${dots}" style="cursor:move">
+          <img class="dots hide bin" src="${recycle}" style="cursor:pointer">
+        </li>
+      `;
+      ul.insertAdjacentHTML('beforeend', html);
+    });
 
     const descp = document.querySelectorAll('.desc');
     descp.forEach((e) => {
