@@ -83,10 +83,7 @@ main > * {
 }
 
 li {
-  display: flex;
-  justify-content: space-between;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  align-items: center;
   font-size: 1rem;
   font-weight: 300;
   padding: 3% 4%;
@@ -99,9 +96,8 @@ li img {
   cursor: pointer;
 }
 
-.form {
+.form, li {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   
@@ -172,10 +168,3 @@ input {
 .strike {
   text-decoration: line-through;
 }
-
-/* #to-do-list {
-  min-height: 5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-} */
