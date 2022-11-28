@@ -3,8 +3,10 @@ import unchecked from './images/unchecked.png';
 import mark from './images/check.png';
 import { ul } from './task.js';
 
+// Status of a todo
+// Display unchecked box or marked
 const select = (ele, task) => {
-  ele.nextSibling.classList.toggle('strike');
+  ele.nextElementSibling.classList.toggle('strike');
   ele.src = ele.src === mark ? unchecked : mark;
   const hold = task.tasks[+ele.parentElement.id - 1].completed;
 
@@ -15,13 +17,16 @@ const select = (ele, task) => {
   }
 };
 
-function updateCheck(task) {
+// Update all mark todos status
+const updateCheck = (task) => {
   const checks = document.querySelectorAll('.check');
   checks.forEach((e) => {
     e.addEventListener('click', () => select(e, task));
   });
-}
+};
 
+// Handle the functionality of removing
+// all marked todos
 const clearTasks = (task) => {
   task.tasks = task.tasks.filter((e) => e.completed === false);
   for (let i = 0; i < task.tasks.length; i += 1) {
