@@ -34,11 +34,11 @@ export default class TaskHandling {
   remove(ele) {
     if (this.signal) {
       // serialize the tasks array incase of changes made by editing
-      this.tasks.forEach((ele, i) => ele.index = i + 1);
+      this.tasks.forEach((ele, i) => { ele.index = i + 1; });
 
-      this.tasks = this.tasks.filter((e) => e.index !== +ele.parentElement.id)
+      this.tasks = this.tasks.filter((e) => e.index !== +ele.parentElement.id);
       // serialize the tasks arrays after filtering the renove task
-      this.tasks.forEach((ele, i) => ele.index = i + 1);
+      this.tasks.forEach((ele, i) => { ele.index = i + 1; });
 
       localStorage.setItem('listOfTasks', JSON.stringify(this.tasks));
       ul.innerHTML = '';
@@ -64,7 +64,7 @@ export default class TaskHandling {
 
     // add eventlisteners
     bin.addEventListener('click', () => this.remove(bin));
-    
+
     textArea.addEventListener('keyup', (e) => {
       if (e.key === 'Enter') {
         this.cleanup(ele, textArea, menu, li, bin);
