@@ -1,7 +1,9 @@
-// Functions related to status of the task
+// This module contains functions related to status of the task
 import unchecked from './images/unchecked.png';
 import mark from './images/check.png';
-import { ul } from './task.js';
+
+// tasks container
+const ul = document.getElementById('to-do-list');
 
 // Status of a todo
 // Display unchecked box or marked
@@ -15,6 +17,7 @@ const select = (ele, task) => {
   } else {
     task.tasks[+ele.parentElement.id - 1].completed = true;
   }
+  localStorage.setItem('listOfTasks', JSON.stringify(task.tasks));
 };
 
 // Update all mark todos status
@@ -29,9 +32,9 @@ const updateCheck = (task) => {
 // all marked todos
 const clearTasks = (task) => {
   task.tasks = task.tasks.filter((e) => e.completed === false);
-  for (let i = 0; i < task.tasks.length; i += 1) {
-    task.tasks[i].index = i + 1;
-  }
+  task.tasks.forEach((e, i) => {
+    e.index = i + 1;
+  });
   localStorage.setItem('listOfTasks', JSON.stringify(task.tasks));
   ul.innerHTML = '';
   task.populate();

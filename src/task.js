@@ -1,13 +1,15 @@
 // This a class containing all the necessary operations
 import dots from './images/menu.png';
 import unchecked from './images/unchecked.png';
+import mark from './images/check.png';
 import recycle from './images/bin.png';
+import { updateCheck } from './status.js';
 
 export const ul = document.getElementById('to-do-list');
 export default class TaskHandling {
   // Initialize the class properties
   constructor(tasks) {
-    // use to make focusout event call remove method once.
+    // use to make focusout event call remove method only once.
     this.signal = false;
 
     this.tasks = tasks;
@@ -37,12 +39,13 @@ export default class TaskHandling {
       this.tasks.forEach((ele, i) => { ele.index = i + 1; });
 
       this.tasks = this.tasks.filter((e) => e.index !== +ele.parentElement.id);
-      // serialize the tasks arrays after filtering the renove task
+      // serialize the tasks arrays after filtering the remove task
       this.tasks.forEach((ele, i) => { ele.index = i + 1; });
 
       localStorage.setItem('listOfTasks', JSON.stringify(this.tasks));
       ul.innerHTML = '';
       this.populate();
+      updateCheck(this);
       this.signal = false;
     }
   }
@@ -77,6 +80,9 @@ export default class TaskHandling {
         this.remove(textArea);
         return;
       }
+
+      // Delay the focusout event incase user
+      // want to click the delete button
       setTimeout(() => this.cleanup(ele, textArea, menu, li, bin), 300);
     });
 
@@ -108,7 +114,7 @@ export default class TaskHandling {
     this.tasks.forEach((ele, i) => {
       const html = `
         <li class="priorities" id="${i + 1}">
-          <img class="check" src="${unchecked}" />
+          <img class="check" src="${ele.completed ? mark : unchecked}" />
           <p class="desc">${ele.desc}</p>
           <input type="text" id="added-task" value="${ele.desc}" class="to-do hide edit">
           <img class="dots" src="${dots}" style="cursor:move">
@@ -118,6 +124,7 @@ export default class TaskHandling {
       ul.insertAdjacentHTML('beforeend', html);
     });
 
+    // Add eventlisteners to the newly created tasks
     const descp = document.querySelectorAll('.desc');
     descp.forEach((e) => {
       e.addEventListener('click', () => this.edit(e));
