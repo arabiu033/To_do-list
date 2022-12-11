@@ -9,7 +9,7 @@ export const ul = document.getElementById('to-do-list');
 export default class TaskHandling {
   // Initialize the class properties
   constructor(tasks) {
-    // use to make focusout event call remove method only once.
+    // use to make sure Focusout Event call 'remove method' only once
     this.signal = false;
 
     this.tasks = tasks;
@@ -82,7 +82,7 @@ export default class TaskHandling {
       }
 
       // Delay the focusout event incase user
-      // want to click the delete button
+      // wants to click the delete button
       setTimeout(() => this.cleanup(ele, textArea, menu, li, bin), 300);
     });
 
