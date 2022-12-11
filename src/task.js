@@ -115,7 +115,7 @@ export default class TaskHandling {
       const html = `
         <li class="priorities" id="${i + 1}">
           <img class="check" src="${ele.completed ? mark : unchecked}" />
-          <p class="desc">${ele.desc}</p>
+          <p class="desc ${ele.completed ? 'strike' : ''}">${ele.desc}</p>
           <input type="text" id="added-task" value="${ele.desc}" class="to-do hide edit">
           <img class="dots" src="${dots}" style="cursor:move">
           <img class="dots hide bin" src="${recycle}" style="cursor:pointer">
