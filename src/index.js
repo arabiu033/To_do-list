@@ -12,18 +12,18 @@ if (localStorage.getItem('listOfTasks')) {
   tasks = new TaskHandling([]);
 }
 
-// eventlisteners for arrow-enter
+// eventlistener for arrow-enter
 const add = document.querySelector('.arrow');
 add.addEventListener('click', () => {
   tasks.add(add.previousSibling.previousSibling);
   updateCheck(tasks);
 });
 
-// clear all completed eventlisteners
+// clear all completed eventlistener
 const clear = document.getElementById('clear');
 clear.addEventListener('click', () => clearTasks(tasks));
 
-// event listeners for Enter key to add new to-do
+// eventlistener for Enter key to add new to-do
 const input = document.getElementById('new-priority');
 input.addEventListener('keyup', (e) => {
   if (e.key === 'Enter') {
