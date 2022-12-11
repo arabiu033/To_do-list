@@ -1,6 +1,6 @@
 // This module contains functions related to status of the task
-import unchecked from './images/unchecked.png';
-import mark from './images/check.png';
+import unchecked from '../images/unchecked.png';
+import mark from '../images/check.png';
 
 // tasks container
 const ul = document.getElementById('to-do-list');

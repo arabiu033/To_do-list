@@ -1,8 +1,8 @@
 import './style.css';
-import TaskHandling from './task.js';
+import TaskHandling from './modules/task.js';
 import {
   updateCheck, clearTasks,
-} from './status.js';
+} from './modules/status.js';
 
 let tasks;
 if (localStorage.getItem('listOfTasks')) {

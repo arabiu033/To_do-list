@@ -1,8 +1,8 @@
 // This a class containing all the necessary operations
-import dots from './images/menu.png';
-import unchecked from './images/unchecked.png';
-import mark from './images/check.png';
-import recycle from './images/bin.png';
+import dots from '../images/menu.png';
+import unchecked from '../images/unchecked.png';
+import mark from '../images/check.png';
+import recycle from '../images/bin.png';
 import { updateCheck } from './status.js';
 
 export const ul = document.getElementById('to-do-list');
