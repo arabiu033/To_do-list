@@ -25,7 +25,7 @@ export default class TaskHandling {
     }
 
     this.taskCount += 1;
-    this.tasks.push({ index: this.taskCount, desc: ele.value, completed: false });
+    this.tasks.push({ index: this.taskCount, desc: ele.value.trim(), completed: false });
     localStorage.setItem('listOfTasks', JSON.stringify(this.tasks));
     ul.innerHTML = '';
     ele.value = '';
