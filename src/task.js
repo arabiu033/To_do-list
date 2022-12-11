@@ -20,7 +20,7 @@ export default class TaskHandling {
 
   // class method to handle adding of to-do
   add(ele) {
-    if (ele.value === '') {
+    if (ele.value.trim() === '') {
       return;
     }
 
