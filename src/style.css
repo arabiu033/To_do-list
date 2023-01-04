@@ -42,7 +42,7 @@ main > * {
 .list-title {
   padding: 1.7% 1.2%;
   height: 55px;
-  width: 35vw;
+  width: 35%;
   background-color: #fff;
   border-radius: 0.1rem;
   color: gray;
@@ -158,7 +158,7 @@ input {
   text-decoration: underline;
   cursor: pointer;
   width: 35vw;
-  margin-top: 0.3rem;
+  margin-top: 0.4rem;
   box-shadow: 0 0.5px 3px #000;
 }
 
@@ -172,4 +172,22 @@ input {
 
 .strike {
   text-decoration: line-through;
+}
+
+@media screen and (max-width: 800px) {
+  main,
+  .list-title,
+  #clear {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .todo {
+    font-size: 1.2rem;
+  }
+
+  .list-title h5 {
+    font-size: 0.7rem;
+  }
 }
