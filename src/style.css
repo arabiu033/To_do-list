@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,700&family=Montserrat:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;700&display=swap');
 
 * {
   padding: 0;
@@ -13,8 +13,7 @@ body {
   background-repeat: no-repeat;
   background-size: 100%;
   background-color: #f1f2f5;
-  font-family: 'Fraunces', serif;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Roboto Slab", serif;
   min-width: 100vw;
   min-height: 90vh;
 }
@@ -27,9 +26,14 @@ main {
   justify-content: center;
 }
 
+main,
+.list-title,
+#clear {
+  width: 40%;
+}
+
 main {
   background-color: #fff;
-  width: 35%;
   height: 100%;
   box-shadow: 0 2px 8px rgb(0 0 0 / 18%);
 }
@@ -42,7 +46,6 @@ main > * {
 .list-title {
   padding: 1.7% 1.2%;
   height: 55px;
-  width: 35%;
   background-color: #fff;
   border-radius: 0.1rem;
   color: gray;
@@ -157,7 +160,6 @@ input {
   font-size: 1rem;
   text-decoration: underline;
   cursor: pointer;
-  width: 35vw;
   margin-top: 0.4rem;
   box-shadow: 0 0.5px 3px #000;
 }
